@@ -10,9 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultContainer = document.getElementById('result-container');
 
     // --- DATA & CONFIG ---
+    // ⭐ MODIFIED: Updated the Anthropic model list here
     const models = {
         openai: ['gpt-4o', 'gpt-4-turbo', 'gpt-3.5-turbo'],
-        anthropic: ['claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307'],
+        anthropic: [
+            'claude-opus-4-20250514',
+            'claude-sonnet-4-20250514',
+            'claude-3-5-sonnet-20241022',
+            'claude-3-5-haiku-20241022'
+        ],
         google: ['gemini-1.5-pro-latest', 'gemini-1.5-flash-latest']
     };
 
@@ -25,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- FUNCTIONS ---
-
-    // ✅ FIXED: This function is now complete.
     function updateModels() {
         const selectedProvider = providerSelect.value;
         modelSelect.innerHTML = '';
@@ -38,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ✅ FIXED: This function is now complete.
     function updateSystemPrompt() {
         const selectedTemplate = promptTemplateSelect.value;
         if (selectedTemplate === 'custom') {
@@ -51,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✅ FIXED: This function is now complete.
     function saveCustomPrompt() {
         if (promptTemplateSelect.value === 'custom') {
             localStorage.setItem('customSystemPrompt', systemPromptInput.value);

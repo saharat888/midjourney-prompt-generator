@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midjourney Prompt Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Midjourney Prompt Generator</h1>
+            <p>เครื่องมือช่วยสร้าง Prompt สำหรับ Midjourney ผ่าน API</p>
+        </header>
+
+        <section class="card">
+            <h2><span class="step-number">1</span> เลือกโมเดล AI</h2>
+            <div class="form-group">
+                <label for="provider-select">AI Provider:</label>
+                <select id="provider-select">
+                    <option value="openai">OpenAI</option>
+                    <option value="anthropic">Anthropic</option>
+                    <option value="google">Gemini (Google)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model-select">Model:</label>
+                <select id="model-select"></select>
+            </div>
+            <p class="warning">⚠️ API Key จะถูกจัดการอย่างปลอดภัยบนเซิร์ฟเวอร์ ไม่จำเป็นต้องกรอกในหน้านี้</p>
+        </section>
+
+        <section class="card">
+            <h2><span class="step-number">2</span> สร้าง Prompt</h2>
+            <div class="form-group">
+                <label for="keyword-input">ใส่แนวคิด หรือ Keyword หลัก:</label>
+                <textarea id="keyword-input" rows="3" placeholder="เช่น ชายหนุ่มในชุดอวกาศนั่งจิบกาแฟบนดาวอังคาร, realistic, cinematic lighting"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="prompt-template-select">เลือกรูปแบบ Prompt:</label>
+                <select id="prompt-template-select">
+                    <option value="default">Default - ทั่วไป</option>
+                    <option value="artistic">Artistic - ศิลปะ</option>
+                    <option value="photography">Photography - ภาพถ่าย</option>
+                    <option value="fantasy">Fantasy - แฟนตาซี</option>
+                    <option value="custom">Custom - กำหนดเอง</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="system-prompt-input">คำสั่งสำหรับ AI (System Prompt):</label>
+                <textarea id="system-prompt-input" rows="6" readonly></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="prompt-count-input">จำนวน Prompt ที่ต้องการสร้าง (สูงสุด 5):</label>
+                <input type="number" id="prompt-count-input" value="1" min="1" max="5">
+            </div>
+
+            <div class="button-group">
+                <button id="generate-btn">สร้าง Prompt</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><span class="step-number">3</span> ผลลัพธ์</h2>
+            <div id="result-container">
+                <p class="placeholder">Prompt ที่สร้างเสร็จแล้วจะแสดงที่นี่...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
